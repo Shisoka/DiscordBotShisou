@@ -1,5 +1,6 @@
 package com.shisokar.discord.bot.commands.music;
 
+import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.shisokar.discord.bot.audio.AudioInfo;
 import com.shisokar.discord.bot.util.MsgSender;
@@ -7,6 +8,7 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Queue extends CmdMusic {
@@ -39,8 +41,17 @@ public class Queue extends CmdMusic {
 
         getManager(guild).getQueue().forEach(audioInfo -> tracks.add(buildQueueMessage(audioInfo)));
 
-        MsgSender.sendEmbedMsg(e, null, "**CURRENT QUEUE**  has `"+tracks.size()+"` songs remaining.");
+        MsgSender.sendEmbedMsg(e, null, "**CURRENT QUEUE**  has `"+tracks.size()+"` songs remaining.\n" +
+                                "Total Duration: "+getTimeStamp(totalQueueDuration()));
         e.getMessage().delete().queue();
+    }
+
+    private long totalQueueDuration(){
+        long totalQueueDuration = 0;
+        for(AudioInfo i : getManager(guild).getQueue()){
+            totalQueueDuration += i.getTrack().getDuration()-i.getTrack().getPosition();
+        }
+        return totalQueueDuration;
     }
 
     private void printQueueList(String[] args, MessageReceivedEvent e){
@@ -68,7 +79,8 @@ public class Queue extends CmdMusic {
         int sideNumbAll = tracks.size() >= QUEUE_PAGE_SIZE ? tracks.size() / QUEUE_PAGE_SIZE : 1;
 
         String desc = "**CURRENT QUEUE**  "+
-                "["+getManager(guild).getQueue().size() + " Tracks | Page " + sideNumb + " / " + sideNumbAll +"]\n\n"+
+                "["+getManager(guild).getQueue().size() + " Tracks | Page " + sideNumb + " - " + sideNumbAll +"]" +
+                "  Total Duration: "+getTimeStamp(totalQueueDuration())+"\n\n"+
                 out;
         MsgSender.sendEmbedMsg(e, null, desc);
         e.getMessage().delete().queue();

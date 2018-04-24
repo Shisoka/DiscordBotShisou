@@ -1,4 +1,4 @@
-﻿package com.shisokar.discord.bot.util;
+package com.shisokar.discord.bot.util;
 
 import com.moandjiezana.toml.Toml;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 public class STATIC {
 
-    public static final String VERSION = "1.4.6";
+    public static final String VERSION = "1.4.7";
 
     public static final String UPDATE_MSG = "**Version "+VERSION+" by Shisokar** [24/4/2018]" +
                                             "*latest addition: idle timer and twitch support*";
