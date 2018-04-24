@@ -67,7 +67,7 @@ public class MsgSender {
         event.getTextChannel().sendMessage(embed.setColor(Color.PINK).build()).queue();
     }
 
-    public static void sendEmbedMsgTwitch(MessageReceivedEvent event, String headline, String desc, String thumbnail, String footer, String footerIcon){
+    public static void sendEmbedMsgStream(MessageReceivedEvent event, String headline, String desc, String thumbnail, String footer, String footerIcon){
         embed = new EmbedBuilder();
         if(desc   != null)    embed.setDescription(desc);
         if(thumbnail != null) embed.setThumbnail(thumbnail);

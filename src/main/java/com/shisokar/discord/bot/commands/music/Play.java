@@ -85,11 +85,13 @@ public class Play extends CmdMusic {
                     name = "Queued";
                     icon = STATIC.MUSICAL_NOTE;
                 }
+                if(track.getInfo().isStream)
+                    name += " - Stream";
                 desc += "**Title:** "+track.getInfo().title+"\n";
                 if(startPosition>0){
                     desc += "**Starting at:** `[" + getTimeStamp(startPosition) + " / " + getTimeStamp(track.getDuration()) + "]`\n";
                 }
-                if(track.getInfo().isStream)
+                if(track.getInfo().identifier.contains("twitch"))
                     desc += "**Link:**  __"+track.getIdentifier()+"__";
                 else
                     desc += "**Link:**  __"+"https://youtu.be/"+track.getIdentifier()+"__";

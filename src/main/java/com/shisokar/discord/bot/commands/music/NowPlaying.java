@@ -3,6 +3,7 @@ package com.shisokar.discord.bot.commands.music;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.shisokar.discord.bot.util.MsgSender;
+import com.shisokar.discord.bot.util.STATIC;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
@@ -30,12 +31,22 @@ public class NowPlaying extends CmdMusic {
         String footerIcon = author.getUser().getAvatarUrl();
 
         if(currentSongIsStream(guild)){//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< is Stream
-            String streamer = info.identifier;
-            streamer = streamer.replace("https://www.twitch.tv/","");
-            String desc = "**Streamer: " + streamer + "**\n" +
-                    "**Title:** " + info.title + "\n" +
-                    "**Link:** __" + info.identifier + "__";
-            MsgSender.sendEmbedMsgTwitch(e, "NOW PLAYING - TWITCH STREAM", desc, null, footer, footerIcon);
+            String desc = "";
+            String thumbnail = "";
+            if(info.identifier.contains("twitch")) {
+                String streamer = info.identifier;
+                streamer = streamer.replace("https://www.twitch.tv/", "");
+                desc += "**Streamer: " + streamer + "**\n"
+                     + "**Title:** " + info.title + "\n"
+                     + "**Link:** __" + info.identifier + "__";
+                thumbnail = null;
+            }
+            else{
+                desc += "**Title:** " + info.title + "\n" +
+                        "**Link:** __http://youtu.be/" + info.identifier + "__";
+                thumbnail += STATIC.YOUTUBE_THUMBNAIL.replace("<ID>", info.identifier);
+            }
+            MsgSender.sendEmbedMsgStream(e, "NOW PLAYING - STREAM", desc, thumbnail, footer, footerIcon);
         }
         else {//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< no Stream
             String paused = "";

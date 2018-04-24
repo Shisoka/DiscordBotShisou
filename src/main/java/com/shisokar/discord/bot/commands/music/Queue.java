@@ -42,7 +42,7 @@ public class Queue extends CmdMusic {
         getManager(guild).getQueue().forEach(audioInfo -> tracks.add(buildQueueMessage(audioInfo)));
 
         MsgSender.sendEmbedMsg(e, null, "**CURRENT QUEUE**  has `"+tracks.size()+"` songs remaining.\n" +
-                                "Total Duration: "+getTimeStamp(totalQueueDuration()));
+                                "Total Duration: `"+getTimeStamp(totalQueueDuration())+"`");
         e.getMessage().delete().queue();
     }
 
@@ -80,7 +80,7 @@ public class Queue extends CmdMusic {
 
         String desc = "**CURRENT QUEUE**  "+
                 "["+getManager(guild).getQueue().size() + " Tracks | Page " + sideNumb + " - " + sideNumbAll +"]" +
-                "  Total Duration: "+getTimeStamp(totalQueueDuration())+"\n\n"+
+                "  Total Duration: `"+getTimeStamp(totalQueueDuration())+"`\n\n"+
                 out;
         MsgSender.sendEmbedMsg(e, null, desc);
         e.getMessage().delete().queue();
