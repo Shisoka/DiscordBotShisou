@@ -1,0 +1,11 @@
+# Rename the file to "config.toml"
+
+Token = ""
+YoutubeAPI = ""
+whitelist = [
+  "" # Server 1
+  "" # Server 2 add or remove more
+]
+IdleTimer = 10
+IdlePauseMultiplier = 2
+
