@@ -82,9 +82,7 @@ public class Main {
 
     private static void configs(){
         List<String> guilds = STATIC.get_WHITELIST_GUILDS();
-        for(String s : guilds){
-            System.out.println(TIME.getINFO()+"whitelisted guild: "+s);
-        }
+        guilds.forEach(g -> System.out.println(TIME.getINFO()+"whitelisted guild: "+g));
         System.out.println(TIME.getINFO()+"IdleTimer = "+STATIC.getIdleTimer()+" seconds");
         System.out.println(TIME.getINFO()+"IdlePauseMultiplier = "+STATIC.getIdlePauseMultiplier()+"x");
     }

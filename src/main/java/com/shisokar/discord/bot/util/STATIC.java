@@ -19,7 +19,7 @@ public class STATIC {
         Toml toml = new Toml().read(file);
         List<String> guilds = toml.getList("whitelist");
         return guilds;
-    };
+    }
 
     public static long getIdleTimer(){
         File file = new File("config.toml");
@@ -46,7 +46,7 @@ public class STATIC {
 
     public static final String MUSICAL_NOTE =  "https://puu.sh/wDO6I/cf8501f2c2.png";
     public static final String MUSICAL_NOTES = "https://puu.sh/wDOUC/d674969f9a.png";
-    public static final String ARROR_FORWARD = "https://puu.sh/wDObQ/22bf9bd1b3.png";
+    public static final String ARROW_FORWARD = "https://puu.sh/wDObQ/22bf9bd1b3.png";
 
 
     public static final String ID_BECOME_AS_GODS   = "c9Ku9HIumpM";

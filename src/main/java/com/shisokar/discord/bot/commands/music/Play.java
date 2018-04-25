@@ -79,7 +79,7 @@ public class Play extends CmdMusic {
                 if(playNow){
                     getManager(guild).playNow(track, author);
                     name = "Playing Now";
-                    icon = STATIC.ARROR_FORWARD;
+                    icon = STATIC.ARROW_FORWARD;
                 } else {
                     getManager(guild).addToQueue(track, author);
                     name = "Queued";
