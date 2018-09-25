@@ -39,7 +39,7 @@ public class SeekRewindForward extends CmdMusic {
             return;
         }
         long position = getMS(args[1]);
-        if(position == 0){
+        if(position < 0){
             MsgSender.sendErrorMsg(e, "\""+args[1]+"\" is no valid time");
             System.out.println(TIME.getINFO()+"no valid time");
         }
@@ -62,7 +62,7 @@ public class SeekRewindForward extends CmdMusic {
             return;
         }
         long duration = getMS(args[1]);
-        if(duration == 0){
+        if(duration < 0){
             MsgSender.sendErrorMsg(e, "\""+args[1]+"\" is no valid duration");
             System.out.println(TIME.getINFO()+"no valid duration");
         }
@@ -86,7 +86,7 @@ public class SeekRewindForward extends CmdMusic {
             return;
         }
         long duration = getMS(args[1]);
-        if(duration == 0){
+        if(duration < 0){
             MsgSender.sendErrorMsg(e, "\""+args[1]+"\" is no valid duration");
             System.out.println(TIME.getINFO()+"no valid duration");
         }

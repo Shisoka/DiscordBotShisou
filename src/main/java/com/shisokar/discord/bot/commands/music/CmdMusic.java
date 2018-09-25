@@ -95,11 +95,11 @@ public class CmdMusic implements Command {
 
     long getMS (String timestamp){
         if (timestamp == null){
-            return 0;
+            return -1;
         }
         String[] strTimes = timestamp.split(":");
         if(strTimes.length < 1){
-            return 0;
+            return -1;
         }
         long[] times = new long[3]; //hours:minutes:seconds
         times[0] = 0;
@@ -109,7 +109,7 @@ public class CmdMusic implements Command {
         for(int i=0; i<strTimes.length; ++i){
             long tmp = getLong(strTimes[strTimes.length-1-i]);
             if(tmp == -1){
-                return 0;
+                return -1;
             } else {
                 times[times.length-1-i] = tmp;
             }
