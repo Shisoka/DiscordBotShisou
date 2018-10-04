@@ -85,6 +85,7 @@ public class Main {
         guilds.forEach(g -> System.out.println(TIME.getINFO()+"whitelisted guild: "+g));
         System.out.println(TIME.getINFO()+"IdleTimer = "+STATIC.getIdleTimer()+" seconds");
         System.out.println(TIME.getINFO()+"IdlePauseMultiplier = "+STATIC.getIdlePauseMultiplier()+"x");
+        System.out.println(TIME.getINFO()+"Audio Volume = "+STATIC.get_AUDIO_VOLUME()+"%");
     }
 
 }

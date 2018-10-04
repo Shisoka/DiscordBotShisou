@@ -1,7 +1,7 @@
 package com.shisokar.discord.bot.util;
 
 import com.moandjiezana.toml.Toml;
-
+import static java.lang.Math.toIntExact;
 import java.io.File;
 import java.util.List;
 
@@ -40,6 +40,13 @@ public class STATIC {
         Toml toml = new Toml().read(file);
         String APIkey = toml.getString("YoutubeAPI");
         return APIkey;
+    }
+
+    public static int get_AUDIO_VOLUME(){
+        File file = new File("config.toml");
+        Toml toml = new Toml().read(file);
+        int volume = toIntExact(toml.getLong("AudioVolume"));
+        return volume;
     }
 
     public static final String YOUTUBE_THUMBNAIL = "https://img.youtube.com/vi/<ID>/default.jpg";
